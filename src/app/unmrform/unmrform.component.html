@@ -1,0 +1,64 @@
+<form (ngSubmit)="submitForm()" #form="ngForm">
+    <div>
+      <label for="name">Your Name:</label>
+      <br>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
+    </div>
+    <div>
+      <label for="childName">Child's Name:</label>
+      <br>
+      <input type="text" id="childName" name="childName" [(ngModel)]="formData.childName" required>
+    </div>
+    <div>
+      <label for="relation">Relation to Child:</label>
+      <br>
+      <input type="text" id="relation" name="relation" [(ngModel)]="formData.relation" required>
+    </div>
+    <div>
+        <label for="relation">travel from :</label>
+        <br>
+        <select class="form-control" id="fromLocation" name="fromLocation" [(ngModel)]="formData.from">
+            <option value=""></option>
+            <option *ngFor="let item of states" [value]="item"> {{item}}</option>
+        </select>
+        <!-- <input type="text" id="relation" name="relation" [(ngModel)]="formData.from" required> -->
+      </div>
+    <div>
+        <label for="relation">to :</label>
+        <br>
+        <select class="form-control" id="toLocation" name="toLocation" [(ngModel)]="formData.to">
+            <option value=""></option>
+            <option *ngFor="let item of states" [value]="item"> {{item}}</option>
+        </select>
+        <!-- <input type="text" id="relation" name="relation" [(ngModel)]="formData.to" required> -->
+    </div>
+    <div>
+        <label for="relation">date</label>
+        <br>
+        <input type="date" id="date" name="relation" [(ngModel)]="formData.date" required>
+    </div>
+    <div>
+        <label for="relation">receiver Name:</label>
+        <br>
+        <input type="text" id="receiver_name" name="receiver_relation" [(ngModel)]="formData.receiver_name" required>
+    </div>
+    <div>
+        <label for="relation">receiver relation to Child:</label>
+        <br>
+        <input type="text" id="receiver_relation" name="receiver_relation" [(ngModel)]="formData.receiver_relation" required>
+    </div>
+    <div>
+        <label for="relation">receiver Number</label>
+        <br>
+        <input type="tel" id="number" name="number" [(ngModel)]="formData.number" required>
+    </div>
+    <div>
+        <label for="termsAndConditions">
+          <input type="checkbox" id="termsAndConditions" name="termsAndConditions" [(ngModel)]="formData.termsAndConditions" required>
+          I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>
+        </label>
+      </div>
+    
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+  

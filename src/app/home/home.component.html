@@ -1,0 +1,38 @@
+<div *ngIf="roles=='parent'" class="home-container">
+    <h1>Welcome to our UNMR Page</h1>
+    <p>Please click the button below to aboard your child:</p>
+    <button class="register-button" routerLink="/register">Register Now</button>
+</div>
+
+<div *ngIf="roles=='security'" class="home-container">
+    <h1>Welcome to our UNMR Page</h1>
+    <p>Hey officer these are the clients we have to receive at airport</p>
+    
+    <div *ngFor="let i of all_form">
+        <mat-card  role="button" (click)="package(i)" class="detail-card">
+            <mat-card-header>
+              <div class="example-header-image"></div>
+              <!-- <mat-card-title>{{i["title"]}}</mat-card-title> -->
+              <mat-card-title>Name</mat-card-title>
+
+              
+            </mat-card-header>
+            <!-- <img mat-card-image src="{{i['image']}}"> -->
+            <hr />
+            <mat-card-content>
+              <p>
+                22 dec
+                <!-- {{i['days']}} -->
+              </p>
+              <hr />
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-stroked-button>View Details</button>
+            </mat-card-actions>
+          </mat-card>
+
+
+    </div>
+</div>
+
+
