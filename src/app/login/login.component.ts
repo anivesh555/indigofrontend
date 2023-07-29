@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -9,22 +11,42 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit{
   ngOnInit() {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    
     }
   username: string="";
   password: string="";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private http:HttpClient
+    ) {}
 
   login() {
-    // You can add your authentication logic here.
-    // For this example, we'll consider a simple username and password check.
-    // if (this.username === 'admin' && this.password === 'password') {
-    //   // If login is successful, navigate to the dashboard (assuming you have a 'dashboard' route).
-    //   this.router.navigate(['/dashboard']);
-    // } else {
-    //   alert('Invalid username or password');
-    // }
+    let data:any
+    console.log(this.username,this.password)
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-type': 'application/json',"Access-Control-Allow-Origin": "*"})
+    }
+    const val = {username:this.username,password:this.password}
+
+
+    this.http.post(`${environment.apiUrl}/api/user/login`,val,httpOptions).subscribe((res)=>{
+      
+      console.log(res,"register")
+      data = res
+      console.log(data["data"]["tokens"]["accessToken"],"token",data["data"]["roles"])
+      if(data["data"]["tokens"]["accessToken"]){
+        localStorage.clear()
+        localStorage.setItem("token",data["data"]["tokens"]["accessToken"])
+        localStorage.setItem("roles",data["data"]["roles"])
+        this.router.navigate([""])
+      }
+      this.username ="";
+      this.password="";
+      
+      
+    },error=>{
+      console.log(error,"erooeee------")
+    })
+    
   }
 }

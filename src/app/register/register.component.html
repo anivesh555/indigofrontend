@@ -1,4 +1,6 @@
 <div class="signup-container">
+    <h2 style="text-align: center;">Register</h2>
+    <p style="text-align: center;">Please create your account</p>
     <form (ngSubmit)="onSubmit()">
         <div>
         <label for="firstName">First Name:</label>
@@ -21,6 +23,6 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" [(ngModel)]="formData.password" required>
         </div>
-        <button type="submit">Register</button>
+        <button mat-stroked-button color="primary" type="submit">Register</button>
     </form>
 </div>

@@ -2,7 +2,7 @@
 
 .home-container {
     text-align: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     background-image: url("https://thumbs.dreamstime.com/z/indigo-airlines-airbus-india-s-low-cost-carrier-getting-ready-departure-delhi-aiport-42742743.jpg?w=992");
     height: 90%;
     background-repeat: no-repeat;
@@ -32,8 +32,8 @@
   .detail-card {
     /* width: 250px; */
     margin:20px;
-    width: 250px;
-    height: 150px;
+    width: 350px;
+    height: 160px;
     /* display: flex;
     flex-direction: column;
     align-items: space-between; */
@@ -42,4 +42,10 @@
     color: #000000;
     overflow: auto;
     
+}
+.home_cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
 }

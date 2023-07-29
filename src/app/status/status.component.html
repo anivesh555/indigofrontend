@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="statusContainer">
+    <div class="form-field">
+        <label for="firstName">Parent Name::</label>
+        <span>{{formData.name}}</span>
+    </div>
+    <div class="form-field">
+        <label for="lastName">Child'name Name:</label>
+        <span>{{formData.childname}}</span>
+    </div>
+    <div class="form-field">
+        <label for="email">Relation to Child:</label>
+        <span>{{formData.relation}}</span>
+    </div>
+    <div class="form-field">
+        <label for="username">travel from:</label>
+        <span>{{formData.departure_location}}</span>
+    </div>
+    <div class="form-field">
+        <label for="password">travel to:</label>
+        <span>{{formData.destination}}</span>
+    </div>
+    <div class="form-field">
+        <label for="password">date:</label>
+        <span>{{formData.date}}</span>
+    </div>
+    <div class="form-field">
+        <label for="password">receiver Name:</label>
+        <span>{{formData.receiver}}</span>
+    </div>
+    <div class="form-field">
+        <label for="password">receiver relation to Child:</label>
+        <span>{{formData.receiver_relation}}</span>
+    </div>
+    <div class="form-field">
+        <label for="password">receiver Number:</label>
+        <span>{{formData.receiver_phone_number}}</span>
+    </div>
+</div>
+
+<div>
+    <label for="statusDropdown">Select Status:</label>
+    <select [(ngModel)]="selectedStatus">
+        <option></option>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+    <button  mat-raised-button color="primary" (click)="updateStatus()" >Update Status</button>
+  </div>

@@ -1,13 +1,16 @@
-<form (ngSubmit)="submitForm()" #form="ngForm">
+<app-header></app-header>
+
+<form *ngIf="current_route.includes('register')" (ngSubmit)="submitForm()" #form="ngForm">
+
     <div>
       <label for="name">Your Name:</label>
       <br>
       <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
     </div>
     <div>
-      <label for="childName">Child's Name:</label>
+      <label for="childname">Child's Name:</label>
       <br>
-      <input type="text" id="childName" name="childName" [(ngModel)]="formData.childName" required>
+      <input type="text" id="childname" name="childname" [(ngModel)]="formData.childname" required>
     </div>
     <div>
       <label for="relation">Relation to Child:</label>
@@ -17,7 +20,7 @@
     <div>
         <label for="relation">travel from :</label>
         <br>
-        <select class="form-control" id="fromLocation" name="fromLocation" [(ngModel)]="formData.from">
+        <select class="form-control" id="fromLocation" name="fromLocation" [(ngModel)]="formData.departure_location">
             <option value=""></option>
             <option *ngFor="let item of states" [value]="item"> {{item}}</option>
         </select>
@@ -26,7 +29,7 @@
     <div>
         <label for="relation">to :</label>
         <br>
-        <select class="form-control" id="toLocation" name="toLocation" [(ngModel)]="formData.to">
+        <select class="form-control" id="toLocation" name="toLocation" [(ngModel)]="formData.destination">
             <option value=""></option>
             <option *ngFor="let item of states" [value]="item"> {{item}}</option>
         </select>
@@ -40,7 +43,7 @@
     <div>
         <label for="relation">receiver Name:</label>
         <br>
-        <input type="text" id="receiver_name" name="receiver_relation" [(ngModel)]="formData.receiver_name" required>
+        <input type="text" id="receiver_name" name="receiver_relation" [(ngModel)]="formData.receiver" required>
     </div>
     <div>
         <label for="relation">receiver relation to Child:</label>
@@ -50,7 +53,7 @@
     <div>
         <label for="relation">receiver Number</label>
         <br>
-        <input type="tel" id="number" name="number" [(ngModel)]="formData.number" required>
+        <input type="tel" id="number" name="number" [(ngModel)]="formData.receiver_phone_number" required>
     </div>
     <div>
         <label for="termsAndConditions">
@@ -58,7 +61,76 @@
           I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>
         </label>
       </div>
-    
-    <button type="submit" [disabled]="form.invalid">Submit</button>
+
+    <button  type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+
+
+
+<form *ngIf="current_route.includes('edit')" (ngSubmit)="updateForm()" #form="ngForm">
+  <h2>{{formData.childname}}</h2>
+    <div>
+      <label for="name">Your Name:</label>
+      <br>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
+    </div>
+    <div>
+      <label for="childname">Child's Name:</label>
+      <br>
+      <input type="text" id="childname" name="childname" [(ngModel)]="formData.childname" required>
+    </div>
+    <div>
+      <label for="relation">Relation to Child:</label>
+      <br>
+      <input type="text" id="relation" name="relation" [(ngModel)]="formData.relation" required>
+    </div>
+    <div>
+        <label for="departure_location">travel from :</label>
+        <br>
+        <select class="form-control" id="departure_location" name="departure_location" [(ngModel)]="formData.departure_location">
+            <option value=""></option>
+            <option *ngFor="let item of states" [value]="item"> {{item}}</option>
+        </select>
+        <!-- <input type="text" id="relation" name="relation" [(ngModel)]="formData.from" required> -->
+      </div>
+    <div>
+        <label for="destination">to :</label>
+        <br>
+        <select class="form-control" id="destination" name="destination" [(ngModel)]="formData.destination">
+            <option value=""></option>
+            <option *ngFor="let item of states" [value]="item"> {{item}}</option>
+        </select>
+        <!-- <input type="text" id="relation" name="relation" [(ngModel)]="formData.to" required> -->
+    </div>
+    <div>
+        <label for="date">date</label>
+        <br>
+        <input type="date" id="date" name="date" [(ngModel)]="formData.date" required>
+    </div>
+    <div>
+        <label for="relation">receiver Name:</label>
+        <br>
+        <input type="text" id="receiver" name="receiver" [(ngModel)]="formData.receiver" required>
+    </div>
+    <div>
+        <label for="receiver_relation">receiver relation to Child:</label>
+        <br>
+        <input type="text" id="receiver_relation" name="receiver_relation" [(ngModel)]="formData.receiver_relation" required>
+    </div>
+    <div>
+        <label for="receiver_phone_number">receiver Number</label>
+        <br>
+        <input type="tel" id="receiver_phone_number" name="receiver_phone_number" [(ngModel)]="formData.receiver_phone_number" required>
+    </div>
+    <div>
+        <label for="termsAndConditions">
+          <input type="checkbox" id="termsAndConditions" name="termsAndConditions" [(ngModel)]="formData.termsAndConditions" required>
+          I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>
+        </label>
+      </div>
+
+    <button  type="submit" [disabled]="form.invalid">Update</button>
   </form>
-  
+
+
+ 

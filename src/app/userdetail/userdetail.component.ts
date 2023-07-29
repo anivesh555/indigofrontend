@@ -10,9 +10,17 @@ export class UserdetailComponent implements OnInit {
 
   constructor(
     private Activatedroute: ActivatedRoute,
+    private router:Router
   ) { }
   public queryId:any
   ngOnInit(): void {
+    const user =localStorage.getItem("token");
+    if (!user) {
+      this.router.navigate(["login"])
+    
+    }
+
+
     this.Activatedroute.queryParamMap.subscribe(
       (params) => {
         this.queryId = params.get('id') || '';
